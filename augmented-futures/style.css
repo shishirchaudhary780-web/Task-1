@@ -1,0 +1,147 @@
+/* =========================
+   Beyond Human: Augmented Futures
+   Responsive HTML + CSS layout
+   ========================= */
+:root{
+  --ink:#0e0b2b;
+  --ink-2:#2a275d;
+  --paper:#ffe2db;
+  --card:#ffffff;
+  --accent:#5b4bff;
+  --shadow:0 8px 20px rgba(10,10,40,.08);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+  color:#222;
+  background:var(--paper);
+  line-height:1.6;
+}
+
+/* Header */
+.site-header{
+  background:linear-gradient(180deg,var(--ink) 0%, var(--ink-2) 100%);
+  color:#fff;
+  padding:32px 0;
+  position:sticky;
+  top:0;
+  z-index:2;
+  box-shadow:var(--shadow);
+}
+.site-header h1{
+  margin:0;
+  font-size:clamp(22px,3.2vw,28px);
+  font-weight:800;
+  letter-spacing:.2px;
+  text-align:center;
+}
+
+/* Layout containers */
+.container{
+  width:min(1100px,92vw);
+  margin:0 auto;
+}
+.page{
+  padding:28px 0 64px;
+}
+
+/* Card & grid */
+.card{
+  background:var(--card);
+  border-radius:14px;
+  padding:20px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(20,20,60,.06);
+}
+.card h2{
+  margin:.2rem 0 1rem;
+  font-size:clamp(18px,2.6vw,22px);
+  line-height:1.2;
+  font-weight:800;
+  color:#111;
+}
+.card p{margin:0; text-align:justify}
+
+.intro-grid, .bottom-grid{
+  display:grid;
+  gap:22px;
+}
+/* Desktop grid similar to the screenshot:
+   Two columns on top (left = 2 tracks stacked, right = one tall block)
+*/
+@media (min-width: 980px){
+  .intro-grid{
+    grid-template-columns: 1.2fr .8fr;
+    align-items:start;
+  }
+  .bottom-grid{
+    grid-template-columns: 1fr;
+  }
+}
+/* Stack on mobile */
+@media (max-width: 979px){
+  .intro-grid, .bottom-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:16px;
+  align-items:start;
+}
+@media (max-width: 720px){
+  .grid-2{grid-template-columns:1fr; }
+}
+
+/* Spans for larger blocks */
+.span-2{ grid-column:1 / -1; }
+
+/* Visual emphasis card on the right column */
+.emphasis{
+  border-left:6px solid var(--accent);
+  padding-left:16px;
+}
+
+/* Media/Image styles */
+.media{
+  width:100%;
+  aspect-ratio: 4/3;
+  overflow:hidden;
+  border-radius:12px;
+  background:#f0f1f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(10,10,40,.08);
+}
+.media.tall{ aspect-ratio: 3/4; }
+.media.wide{ aspect-ratio: 16/9; }
+.media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* Footer note */
+.ai-note{
+  margin-top:28px;
+  font-size:.95rem;
+  color:#333;
+  background:#fff;
+  border-radius:12px;
+  padding:14px 16px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(20,20,60,.06);
+}
+
+/* Accessibility: focus outlines */
+a, button, .card, .media img{
+  outline-color: var(--accent);
+  outline-offset:2px;
+}
